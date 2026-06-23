@@ -35,14 +35,13 @@ La Data Loss Prevention (DLP) est le mécanisme qui empêche vos données sensib
 
 
 
-| Étape | Description |
-|---|---|
 | Scénario | Comment la DLP bloque |
+|---|---|
 | Utilisateur partage un fichier Confidentiel via un email vers une IA (ex: envoie à upload@chatgpt.com) | DLP détecte l'étiquette Confidentiel + destination externe et bloque l'envoi. |
 | Utilisateur télécharge un fichier SharePoint pour l'uploader sur un site d'IA | DLP Endpoint détecte le téléchargement depuis SharePoint et bloque l'accès au clipboard ou au navigateur non autorisé. |
 | Utilisateur copie-colle du texte contenant un numéro AVS dans une IA via le navigateur | DLP Endpoint détecte la présence d'un AVS dans le presse-papier et bloque le collage dans les applications non autorisées. |
 | Script automatique appelle l'API OpenAI avec des données sensibles | MDCA (section 1) bloque au niveau réseau - DLP seul ne peut pas bloquer les appels API directs. |
-| ⚠️ ANGLE MORT : Copier-coller de texte brut vers une IA via navigateur (~90 % des usages Shadow AI) Exemple : copier un extrait d’email, de contrat ou de code dans la zone de saisie de ChatGPT. Aucun fichier transféré, la DLP fichier est aveugle. Si la règle presse-papier Endpoint DLP n’est pas activée (souvent jugée trop intrusive en PME), la surveillance reste purement réactive (post-incident). | Couverture complète exige trois couches combinées :<br>(1) MDCA non-sanctionné + MDE (section 1.5 + toggle activé, section 1.3.4) : blocage de tous les sites IA catalogués, tous navigateurs, c’est la barrière primaire (blocage fort) ; (2) Endpoint DLP presse-papier activée sur les données sensibles (AVS, IBAN) pour les appareils MDE (section 3.3.3) — ⚠️ ceci reste un contrôle de conformité et de traçabilité, pas un blocage fort : il dépend de la détection SIT (faux négatifs possibles) et de l’activation effective sur le poste ; (3) sensibilisation utilisateurs (section 9.5) pour les cas résiduels. Note : le Web Content Filtering MDE (section 9.4) n’offre pas de catégorie IA en mai 2026. |
+| ⚠️ ANGLE MORT : Copier-coller de texte brut vers une IA via navigateur (~90 % des usages Shadow AI) Exemple : copier un extrait d’email, de contrat ou de code dans la zone de saisie de ChatGPT. Aucun fichier transféré, la DLP fichier est aveugle. Si la règle presse-papier Endpoint DLP n’est pas activée (souvent jugée trop intrusive en PME), la surveillance reste purement réactive (post-incident). | Couverture complète exige trois couches combinées : (1) MDCA non-sanctionné + MDE (section 1.5 + toggle activé, section 1.3.4) : blocage de tous les sites IA catalogués, tous navigateurs, c’est la barrière primaire (blocage fort) ; (2) Endpoint DLP presse-papier activée sur les données sensibles (AVS, IBAN) pour les appareils MDE (section 3.3.3) — ⚠️ ceci reste un contrôle de conformité et de traçabilité, pas un blocage fort : il dépend de la détection SIT (faux négatifs possibles) et de l’activation effective sur le poste ; (3) sensibilisation utilisateurs (section 9.5) pour les cas résiduels. Note : le Web Content Filtering MDE (section 9.4) n’offre pas de catégorie IA en mai 2026. |
 
 
 ## 3.2 Créer la politique DLP principale - Blocage partage externe
@@ -108,21 +107,26 @@ Cette section introduit une approche complémentaire au blocage total (sections 
 Trois modes de protection sont disponibles. Le mode hybride (recommandé) combine les avantages des deux premiers.
 
 
-
-
-| Étape | Description |
-|---|---|
 | Critère | Mode A — Blocage total (v1.0) |
+|---|---|
 | Principe | Aucun accès aux IA non autorisées. Les sites sont bloqués au niveau réseau (MDCA + MDE + URLBlocklist). Aucun bypass possible. |
 | Prérequis | Business Premium + Defender and Purview Suites (aucun coût supplémentaire). |
 | Force | Blocage dur — le seul qui empêche physiquement l’accès. Aucune donnée ne peut sortir vers le site bloqué. |
 | Limite | Frustration des collaborateurs → contournement (smartphone, hotspot). L’admin ne voit pas les tentatives de contournement hors réseau. |
+
+
+
 | Critère | Mode B — Usage contrôlé (v1.1) |
+|---|---|
 | Principe | Accès autorisé dans Edge for Business. Les prompts contenant des SITs (AVS, IBAN) sont bloqués avec notification Purview. L’utilisateur peut cliquer Continuer (override logué). |
 | Prérequis | Business Premium + Defender and Purview Suites + abonnement Azure avec facturation à l’utilisation (PAYG). Coût variable selon le volume de prompts analysés — négligeable en PME. |
 | Force | Le besoin est couvert → le contournement diminue. Traçabilité complète dans Purview Activity Explorer (utilisateur, timestamp, SIT détecté, action). |
 | Limite | Le blocage est « Block with override » par design (Microsoft) — pas un blocage dur. L’utilisateur averti peut passer outre. Seuls les SITs reconnus sont détectés — le texte brut sans SIT passe. |
+
+
+
 | Critère | Mode Hybride — Recommandé pour PME |
+|---|---|
 | Principe | Apps à fort usage (ChatGPT, Gemini) en Mode B (sanctionnées + DLP inline). Apps sans besoin métier (Grok, DeepSeek) en Mode A (bloquées). Copilot M365 sanctionné nativement + DSPM. |
 | Prérequis | Identiques au Mode B (Azure PAYG). |
 | Force | Défense en profondeur réaliste : blocage dur là où c’est nécessaire, friction + traçabilité là où c’est utile. Démontrable en audit nLPD art. 24. |
@@ -160,15 +164,18 @@ La DLP inline Edge for Business est une fonctionnalité à paiement à l’utili
 Pour passer une app IA du Mode A (bloqué) au Mode B (contrôlé), trois couches de blocage doivent être désactivées simultanément pour cette app. Si une seule couche reste active, le blocage persiste. Finding terrain validé en juin 2026.
 
 
-
-| Étape | Description |
-|---|---|
 | App IA | Mode recommandé |
+|---|---|
 | ChatGPT | Mode B (sanctionné + DLP inline) — usage le plus répandu, besoin réel en PME |
 | Google Gemini | Mode B (sanctionné + DLP inline) — alternative courante |
 | Grok, DeepSeek, Meta AI | Mode A (bloqué) — pas de besoin PME identifié |
 | Perplexity AI | Au choix — évaluer le besoin métier |
 | Copilot M365 | Sanctionné nativement — protégé par DSPM (section 4) |
+
+
+
+| Étape | Description |
+|---|---|
 | 1 | MDCA — Sanctionner l’app security.microsoft.com → Applications cloud → Catalogue d’applications cloud → cherchez l’app (ex. : ChatGPT) → changez de Non sanctionné → Sanctionné. |
 | 2 | Intune URLBlocklist — Retirer le domaine intune.microsoft.com → Appareils → Configuration → profil Edge - Restrictions Shadow AI → retirez chatgpt.com de la liste URLBlocklist → Enregistrer. |
 | 3 | MDE Indicateurs — Désactiver l’indicateur security.microsoft.com → Paramètres → Points de terminaison → Indicateurs → onglet URL/Domaines → désactivez ou supprimez l’indicateur chatgpt.com (et api.openai.com si présent). ⚠️ Les indicateurs auto-générés par MDCA (« Unsanctioned cloud app access was blocked ») sont supprimés automatiquement quand l’app est sanctionnée. Les indicateurs créés manuellement doivent être retirés manuellement. |
@@ -178,9 +185,8 @@ Pour passer une app IA du Mode A (bloqué) au Mode B (contrôlé), trois couches
 ### 3.4.5 Comportement par navigateur — Findings terrain
 
 
-| Étape | Description |
-|---|---|
 | Navigateur | Comportement observé (validé juin 2026) |
+|---|---|
 | Edge for Business (Mode B) | Site accessible. Les prompts contenant des SITs (AVS, IBAN) déclenchent une notification Microsoft Purview : « Votre organisation a protégé le contenu que vous essayez de coller » avec boutons Continuer (override logué) et Annuler. |
 | Firefox (Mode B) | Application entièrement bloquée — message « Cette application a été bloquée par votre administrateur système ». Purview bloque automatiquement Firefox comme navigateur non protégé sans configuration Intune manuelle. |
 | Chrome (Mode B) | Même comportement que Firefox — bloqué automatiquement. |
@@ -192,9 +198,8 @@ Pour passer une app IA du Mode A (bloqué) au Mode B (contrôlé), trois couches
 La documentation Microsoft Endpoint DLP confirme que les actions clipboard/paste dans le navigateur sont conçues pour la détection et l’audit, pas pour le blocage silencieux. L’option « Block » pour les opérations de texte dans Edge se comporte comme « Block with override » — l’utilisateur peut toujours cliquer « Continuer ». L’override est logué dans Purview Activity Explorer avec l’identité de l’utilisateur, le timestamp et le SIT détecté.
 
 
-| Étape | Description |
-|---|---|
 | Type de blocage | Bypass possible ? |
+|---|---|
 | MDE Network Protection (Mode A) | ❌ Aucun bypass — blocage dur |
 | DLP inline Edge — texte envoyé | ✅ Block with override (by design Microsoft) |
 | DLP inline Edge — fichier upload | ❌ Blocage direct possible |

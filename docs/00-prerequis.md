@@ -34,9 +34,8 @@ Avant de commencer, vérifiez que vous disposez bien des licences nécessaires. 
 
 
 
-| Étape | Description |
-|---|---|
 | Licence | Ce qu'elle inclut pour ce guide |
+|---|---|
 | Microsoft 365 Business Premium | Entra ID P1, Intune, Defender for Business, Exchange Online Plan 2, SharePoint, OneDrive, Teams. |
 | Microsoft Defender and Purview Suites for Microsoft 365 Business Premium | MDCA (Defender for Cloud Apps), Purview Suite complète : DLP avancée, Labels de sensibilité, DSPM for AI, Endpoint DLP, Insider Risk Management, Defender for Identity, Purview Information Protection, Purview Audit. |
 
@@ -65,9 +64,8 @@ Vous avez besoin d'un compte avec les droits administrateur. Voici comment attri
 ## 0.3 Portails utilisés dans ce guide
 
 
-| Étape | Description |
-|---|---|
 | Portail | URL |
+|---|---|
 | Centre d'administration Microsoft 365 | https://admin.microsoft.com |
 | Microsoft Entra ID (Azure AD) | https://entra.microsoft.com |
 | Microsoft Purview | https://purview.microsoft.com |
@@ -109,7 +107,8 @@ Certaines configurations nécessitent PowerShell. Voici comment l'installer corr
 | ☐ | PowerShell Exchange Online installé et connexion testée avec succès | À faire |
 | ☐ | Toggle « Microsoft Defender for Cloud Apps » activé dans MDE Fonctionnalités avancées (section 1.3.4). Critique : sans lui, le blocage MDCA→MDE est inactif | À faire |
 | ☐ | Network Protection activé en mode Block via Intune Catalogue des paramètres (section 1.3.5). Critique : sans lui, aucun blocage réel n’est effectif | À faire |
-| ☐ | Navigateur Edge ou Chrome à jour \| \| □ \| Abonnement Azure lié au tenant avec facturation à l’utilisation (PAYG) — requis uniquement pour la section 3.4 (DLP inline Edge). Sans ce prérequis, les sections 1 à 9 restent pleinement fonctionnelles | À faire |
+| ☐ | Navigateur Edge ou Chrome à jour | À faire |
+| ☐ | Abonnement Azure lié au tenant avec facturation à l’utilisation (PAYG) — requis uniquement pour la section 3.4 (DLP inline Edge). Sans ce prérequis, les sections 1 à 9 restent pleinement fonctionnelles | À faire |
 
 
 ---

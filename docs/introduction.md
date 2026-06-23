@@ -90,9 +90,8 @@ La Suisse dispose depuis le 1er septembre 2023 de la nouvelle Loi fédérale sur
 
 
 
-| Étape | Description |
-|---|---|
 | Article nLPD | Risque lié au Shadow AI |
+|---|---|
 | Art. 5 let. c - Données sensibles | Les données de santé, biométriques, d'appartenance syndicale, religieuse ou politique envoyées à une IA externe constituent une violation grave. |
 | Art. 6 - Finalité & Proportionnalité | Les données collectées pour un usage précis ne peuvent pas être réutilisées pour entraîner un modèle IA externe. |
 | Art. 8 - Sécurité des données | L'obligation de mesures techniques et organisationnelles (MTO) est violée si des données peuvent librement quitter le périmètre sécurisé. |
@@ -112,9 +111,8 @@ Ce guide se concentre sur la couche MDCA (gouvernance du flux). La couche Purvie
 
 
 
-| Étape | Description |
-|---|---|
 | Couche | Rôle |
+|---|---|
 | Microsoft Defender for Cloud Apps (MDCA) | Surveille et contrôle le trafic réseau. Détecte les applications cloud non autorisées (dont les IA externes). Peut bloquer l'accès à des domaines ou des applications entières. Visible dans le portail Microsoft Defender. |
 | Microsoft Purview | Protège les données elles-mêmes. Classe et étiquette les fichiers sensibles. Applique des règles DLP qui empêchent le partage de fichiers confidentiels. Audite toutes les activités. Surveille les interactions avec Copilot M365. |
 
@@ -142,9 +140,8 @@ Ce guide couvre la configuration complète des éléments suivants :
 
 
 
-| Étape | Description |
-|---|---|
 | Composant | Ce que vous allez configurer |
+|---|---|
 | MDCA - Discovery | Inventaire automatique de toutes les applications IA utilisées dans votre organisation. |
 | MDCA - App Control | Blocage ou restriction des applications IA non approuvées. |
 | MDCA - Policies | Alertes automatiques en cas d'utilisation d'une IA non autorisée. |
@@ -178,10 +175,10 @@ Ce modèle mappe chaque couche de l’architecture IT aux menaces Shadow AI corr
 | Couche | Menace Shadow AI | Contrôle déployé | Section | Statut |
 |---|---|---|---|---|
 | Utilisateur | Usage volontaire ou inconscient d’IA non validée | Communication nLPD + charte + sensibilisation | 9.5 | ⚠️ Partiel, dépend de l’adoption |
-| Appareil | Apps IA installées localement (LLM, extensions) | MDE onboarding + Intune + Network Protection Block | 1.3, 1.3.5 | ✅ Windows gérés<br>❌ Mobile hors périmètre |
+| Appareil | Apps IA installées localement (LLM, extensions) | MDE onboarding + Intune + Network Protection Block | 1.3, 1.3.5 | ✅ Windows gérés ❌ Mobile hors périmètre |
 | Réseau | Trafic vers domaines IA externes | MDCA non-sanctionné + indicateurs MDE + URLBlocklist Edge | 1.5, 6.2, 6.3 | ✅ Couverture effective sur endpoints Windows gérés, sans contournement réseau (VPN, DNS externe, DoH) (Network Protection actif). Hors périmètre : iOS/Android |
-| Application | Apps cloud IA non autorisées | MDCA Cloud Discovery + sanctionner/non-sanctionner + AutoBlock | 1.5, 1.6 | ✅ Couvert catalogue MDCA<br>❌ SaaS tiers hors catalogue |
-| Données | Fuite de données sensibles (AVS, IBAN, santé) | DLP Purview + IRM + DSPM for AI + Endpoint DLP | 3, 4, 5 | ✅ Couvert sur appareils MDE<br>⚠️ Copier-coller résiduel |
+| Application | Apps cloud IA non autorisées | MDCA Cloud Discovery + sanctionner/non-sanctionner + AutoBlock | 1.5, 1.6 | ✅ Couvert catalogue MDCA ❌ SaaS tiers hors catalogue |
+| Données | Fuite de données sensibles (AVS, IBAN, santé) | DLP Purview + IRM + DSPM for AI + Endpoint DLP | 3, 4, 5 | ✅ Couvert sur appareils MDE ⚠️ Copier-coller résiduel |
 | Comportement | Patterns anormaux non détectés | MDCA alertes + MDE Advanced Hunting + MDCA-DET policy | 1.7, 9.3 | ✅ Détection, réponse manuelle requise |
 
 
