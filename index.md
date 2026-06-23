@@ -58,9 +58,8 @@ permalink: /
 Cette chronologie permet un déploiement progressif sans interruption de service. Chaque semaine représente un palier stable : si vous devez vous arrêter, l’architecture reste cohérente à la fin de chaque semaine.
 
 
-| Étape | Description |
-|---|---|
 | Période | Actions |
+|---|---|
 | Semaine 1 | Activation MDCA + onboarding MDE : activer le toggle MDCA-MDE (section 1.3.4), vérifier Cloud Discovery, onboarder les appareils Windows dans Defender for Endpoint. Network Protection en mode Block via Intune (section 1.3.5). Ces deux contrôles sont les plus critiques : sans eux, toute la chaîne de blocage est silencieuse. |
 | Semaine 2 | Gouvernance MDCA : sanctionner les apps IA approuvées (Copilot M365), non-sanctionner les apps IA non autorisées (ChatGPT grand public, Gemini, etc.), créer la stratégie AutoBlock (section 1.6) et la politique de détection MDCA-DET-Shadow-AI-Generative (section 1.7.1). Politique BYOD Conditional Access (section 1.8.1). |
 | Semaine 3 | DLP Purview : créer la politique principale (section 3.2) en mode Test, créer la politique Endpoint DLP (section 3.3.2) en mode Test, configurer les activités surveillées (section 3.3.3). Blocage réseau : Edge URLBlocklist via Intune (section 6.2), 6 indicateurs MDE URL/Domaines API (section 6.3). Valider les tests T1a et T1b (section 8). |
