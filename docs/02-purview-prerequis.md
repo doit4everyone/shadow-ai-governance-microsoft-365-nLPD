@@ -54,9 +54,9 @@ Vérifiez que les éléments suivants sont en place. Ces prérequis sont nécess
 | ✔ | Prérequis | Réf. guide Purview |
 |---|---|---|
 | ☐ | Audit unifié activé, délai 48-72h avant pleine opérationnalité | Configuration_Microsoft_Purview_2026.docx — Partie 0, section 1.5. Vérification : Purview → Audit → Rechercher. Si le formulaire de recherche est actif, l'audit est activé. Si l'audit est désactivé, un bouton «Démarrer l'enregistrement» apparaît à la place. |
-| ☐ | Étiquettes publiées (minimum Interne, Confidentiel, Secret) avec chiffrement sur les deux niveaux supérieurs | Configuration_Microsoft_Purview_2026.docx Partie 2. Vérification : Protection des données → Étiquettes de confidentialité <br>7 étiquettes doivent être présentes. Note 2026 : un bandeau «Migrez vers le modèle d'étiquette moderne» peut apparaître, ne pas cliquer en production. |
-| ☐ | Politique DLP de base active couvrant SharePoint, OneDrive et Exchange | Configuration_Microsoft_Purview_2026.docx Partie 4. Vérification : Protection contre la perte de données → Stratégies.<br>Au moins une politique active (statut Synchronisation terminée). |
-| ☐ | Politique d’auto-labelling configurée (AVS + IBAN - en simulation minimum) | Configuration_Microsoft_Purview_2026.docx Partie 3. Vérification : Stratégies → Stratégies d'étiquetage automatique<br>2 stratégies actives (Auto-Label-RH-Sensible et Auto-Label-Donnees-Sensibles-IBAN). |
+| ☐ | Étiquettes publiées (minimum Interne, Confidentiel, Secret) avec chiffrement sur les deux niveaux supérieurs | Configuration_Microsoft_Purview_2026.docx Partie 2. Vérification : Protection des données → Étiquettes de confidentialité  7 étiquettes doivent être présentes. Note 2026 : un bandeau «Migrez vers le modèle d'étiquette moderne» peut apparaître, ne pas cliquer en production. |
+| ☐ | Politique DLP de base active couvrant SharePoint, OneDrive et Exchange | Configuration_Microsoft_Purview_2026.docx Partie 4. Vérification : Protection contre la perte de données → Stratégies. Au moins une politique active (statut Synchronisation terminée). |
+| ☐ | Politique d’auto-labelling configurée (AVS + IBAN - en simulation minimum) | Configuration_Microsoft_Purview_2026.docx Partie 3. Vérification : Stratégies → Stratégies d'étiquetage automatique 2 stratégies actives (Auto-Label-RH-Sensible et Auto-Label-Donnees-Sensibles-IBAN). |
 | ☐ | Endpoint DLP avec groupe «Sites web d’IA générative» activé (action Bloquer ou Auditer) | Configuration_Microsoft_Purview_2026.docx Partie 9. Vérification : Protection contre la perte de données → Stratégies → DLP-Protection-Endpoint → règle → section Domaine de service → groupe «Sites web d'IA générative» configuré en Bloquer. |
 | ☐ | Appareils onboardés dans Microsoft Defender for Endpoint | Section 1.3 de ce guide. Vérification : security.microsoft.com → Ressources → Inventaire des appareils — métrique clé : «Non intégré = 0». |
 
@@ -74,13 +74,12 @@ C’est le cas le plus fréquent en PME : Purview a été activé lors de la so
 
 
 
-| Étape | Description |
-|---|---|
 | Ce qu’il faut vérifier | Où et comment |
+|---|---|
 | Étiquettes de sensibilité existantes | Purview → Protection des informations → Étiquettes. Notez : noms, niveaux, chiffrement activé ou non, groupes assignés. |
 | Politiques DLP actives | Purview → Protection contre la perte de données → Politiques. Notez : emplacements couverts, actions (bloquer / avertir / auditer), mode (Test ou Actif). |
 | Politiques d’auto-labelling | Purview → Protection des informations → Politiques d’étiquetage automatique. Notez : SITs détectés, étiquettes appliquées, emplacements. |
-| Audit unifié | PowerShell : Get-AdminAuditLogConfig \| Select-Object UnifiedAuditLogIngestionEnabled. Résultat attendu : UnifiedAuditLogIngestionEnabled = True.<br>Si False : exécutez Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true et attendez 48-72h. |
+| Audit unifié | PowerShell : Get-AdminAuditLogConfig \| Select-Object UnifiedAuditLogIngestionEnabled. Résultat attendu : UnifiedAuditLogIngestionEnabled = True. Si False : exécutez Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true et attendez 48-72h. |
 | Politiques MDCA existantes | Portail Defender (security.microsoft.com) → Applications cloud → Stratégies → Gestion des stratégies. Vérifiez si des politiques de découverte ou de session sont déjà en place. Note 2026 : depuis juin 2025, le modèle de détection des menaces est dynamique, les anciennes stratégies de détection ont été migrées automatiquement. |
 | Appareils onboardés MDE | Portail Defender → Ressources → Inventaire des appareils. Vérifiez que vos postes Windows apparaissent dans la liste. Métrique clé : «Non intégré = 0» indique que tous les appareils sont onboardés. |
 
@@ -106,9 +105,8 @@ Même avec les prérequis en place, plusieurs situations fréquentes en PME peuv
 
 
 
-| Étape | Description |
-|---|---|
 | Situation fréquente | Ce qu’il faut faire |
+|---|---|
 | Étiquettes avec des noms différents du guide Configuration_Microsoft_Purview_2026.docx (ex : Privé, Restreint, Très secret) | Ne pas renommer les étiquettes existantes, cela réinitialise la protection sur tous les fichiers déjà étiquetés. Mapper les noms existants aux niveaux du guide et documenter la correspondance. Utiliser ces noms dans les règles DLP Shadow AI de la Partie 3. |
 | Politiques DLP déjà actives en mode Blocage | Ajouter les nouvelles règles Shadow AI à une politique existante plutôt que d’en créer une nouvelle. Passer la règle en mode Test uniquement, pas la politique entière. Vérifier que la nouvelle règle ne crée pas de doublon de blocage sur les mêmes conditions. |
 | MDCA déjà configuré avec des politiques de découverte existantes | Faire l’inventaire des politiques MDCA avant d’en créer de nouvelles (section 1.7). Vérifier si des applications IA sont déjà marquées Sanctionnées. Ne pas modifier ces statuts sans validation métier. |
@@ -121,9 +119,8 @@ Même avec les prérequis en place, plusieurs situations fréquentes en PME peuv
 Sur un tenant existant, déployez les éléments dans cet ordre strict pour éviter les effets de bord.
 
 
-| Étape | Description |
-|---|---|
 | Ordre | Action |
+|---|---|
 | 1 | Faire l’inventaire complet (section 2.3.1). Ne rien modifier avant. |
 | 2 | Activer l’audit si pas encore fait. Attendre 48-72h. |
 | 3 | Vérifier ou compléter les étiquettes et groupes mail-enabled (prérequis RMS). |
