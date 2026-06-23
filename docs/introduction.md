@@ -43,8 +43,7 @@ Voici des situations réelles que vous pouvez rencontrer dans votre organisation
 - Un médecin dans une clinique utilise un chatbot IA pour reformuler des notes médicales contenant des données de patients.
 
 
-🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont transmises à des serveurs situés hors de la Suisse, hors de l'Union Européenne, sans accord de traitement des données, sans chiffrement garanti, et potentiellement utilisées pour réentraîner les modèles d'IA. |
-
+> 🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont transmises à des serveurs situés hors de la Suisse, hors de l'Union Européenne, sans accord de traitement des données, sans chiffrement garanti, et potentiellement utilisées pour réentraîner les modèles d'IA.
 
 
 
@@ -62,8 +61,7 @@ Lorsqu'un collaborateur colle des données dans une IA externe ces données sont
 Un point particulièrement important pour les équipes techniques : Purview seul ne peut pas bloquer les API appelées directement depuis du code ou des scripts. Voici pourquoi c'est dangereux :
 
 
-| Exemple concret : API non bloquée par Purview |
-|---|
+> Exemple concret : API non bloquée par Purview
 | Un développeur crée un script Python qui appelle directement l'API OpenAI (api.openai.com) depuis son poste de travail. |
 | Il envoie automatiquement les fichiers du dossier /Projets vers GPT-4 pour analyse. |
 | Purview voit cette activité comme du trafic réseau chiffré standard, il ne peut pas inspecter le contenu des appels HTTPS directs. |
@@ -98,8 +96,7 @@ La Suisse dispose depuis le 1er septembre 2023 de la nouvelle Loi fédérale sur
 
 
 
-| nLPD SUISSE La violation de la nLPD peut entraîner des sanctions pénales allant jusqu'à CHF 250'000.- pour les personnes physiques responsables (art. 60-63 nLPD). L'amende s'applique à la personne physique (le responsable), Exception : l'art. 64 nLPD prévoit que l'entreprise peut être condamnée à payer une amende jusqu'à CHF 50'000.- si l'identification de la personne physique responsable exigerait des efforts disproportionnés. Le Préposé Fédéral à la Protection des Données et à la Transparence (PFPDT) dispose de pouvoirs d'enquête et de sanction renforcés depuis la révision de la loi. |
-|---|
+> nLPD SUISSE La violation de la nLPD peut entraîner des sanctions pénales allant jusqu'à CHF 250'000.- pour les personnes physiques responsables (art. 60-63 nLPD). L'amende s'applique à la personne physique (le responsable), Exception : l'art. 64 nLPD prévoit que l'entreprise peut être condamnée à payer une amende jusqu'à CHF 50'000.- si l'identification de la personne physique responsable exigerait des efforts disproportionnés. Le Préposé Fédéral à la Protection des Données et à la Transparence (PFPDT) dispose de pouvoirs d'enquête et de sanction renforcés depuis la révision de la loi.
 
 
 
@@ -115,8 +112,7 @@ Ce guide se concentre sur la couche MDCA (gouvernance du flux). La couche Purvie
 
 
 
-| Analogie simple pour comprendre |
-|---|
+> Analogie simple pour comprendre
 | Imaginez votre entreprise comme un bâtiment sécurisé : |
 | - MDCA = le garde à l'entrée qui contrôle qui peut sortir et vers où. |
 | - Purview = les casiers à clé à l'intérieur qui protègent les documents sensibles. |
@@ -127,8 +123,7 @@ Ce guide se concentre sur la couche MDCA (gouvernance du flux). La couche Purvie
 
 ## Architecture de la solution
 
-| 🎯  À LIRE EN PREMIER - Périmètre réel de protection Correctement déployée avec Network Protection en mode Block, cette pile native Microsoft (Business Premium + extension Defender et Purview) traite efficacement les vecteurs où la donnée sort par le réseau : sites d'IA dans les navigateurs gérés, appels API directs, partage externe par email/SharePoint, appareils BYOD non conformes et flux Power Platform. Elle ne couvre pas totalement trois vecteurs, qui restent le risque résiduel principal : le copier-coller manuel de texte vers un outil IA autorisé ou non encore catalogué (l'usage le plus fréquent), le mobile (smartphones personnels hors MDE) et les SaaS tiers à IA native (Notion AI, Salesforce Einstein) dont le trafic passe par des canaux déjà approuvés. Ces vecteurs exigent des mesures complémentaires (Intune App Protection pour le mobile, sensibilisation, revue contractuelle), détaillées en section 9.7. Objectif réaliste : réduire fortement les fuites par les canaux réseau, documenter la surveillance pour la nLPD et identifier clairement ce qui reste ouvert. Ce guide ne prétend pas à une couverture totale du Shadow AI, et la section 9.7 énonce sans détour les angles morts. |
-|---|
+> 🎯  À LIRE EN PREMIER - Périmètre réel de protection Correctement déployée avec Network Protection en mode Block, cette pile native Microsoft (Business Premium + extension Defender et Purview) traite efficacement les vecteurs où la donnée sort par le réseau : sites d'IA dans les navigateurs gérés, appels API directs, partage externe par email/SharePoint, appareils BYOD non conformes et flux Power Platform. Elle ne couvre pas totalement trois vecteurs, qui restent le risque résiduel principal : le copier-coller manuel de texte vers un outil IA autorisé ou non encore catalogué (l'usage le plus fréquent), le mobile (smartphones personnels hors MDE) et les SaaS tiers à IA native (Notion AI, Salesforce Einstein) dont le trafic passe par des canaux déjà approuvés. Ces vecteurs exigent des mesures complémentaires (Intune App Protection pour le mobile, sensibilisation, revue contractuelle), détaillées en section 9.7. Objectif réaliste : réduire fortement les fuites par les canaux réseau, documenter la surveillance pour la nLPD et identifier clairement ce qui reste ouvert. Ce guide ne prétend pas à une couverture totale du Shadow AI, et la section 9.7 énonce sans détour les angles morts.
 
 
 Ce guide couvre la configuration complète des éléments suivants :

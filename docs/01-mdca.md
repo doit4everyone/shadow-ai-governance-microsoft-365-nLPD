@@ -33,8 +33,7 @@ lang: fr
 Microsoft Defender for Cloud Apps (MDCA) est votre principal outil de détection et de blocage des applications IA non autorisées. En mode Cloud Discovery via Microsoft Defender for Endpoint, il analyse les métadonnées réseau (domaines contactés, volumes, horodatages) de tous les appareils onboardés. Note : ce n’est pas un proxy inline, il ne lit pas le contenu des flux HTTPS. Le proxy inline (CAAC) est une configuration avancée séparée, non couverte dans ce guide de base.
 
 
-| Ce que MDCA fait concrètement |
-|---|
+> Ce que MDCA fait concrètement
 | 1. Il découvre automatiquement la majorité des applications cloud visibles réseau utilisées par vos collaborateurs (ChatGPT, Claude, Gemini, Perplexity, etc.). Limite : Cloud Discovery reste borné aux flux DNS/HTTP(S) observables — il ne couvre pas les WebSockets ni les applications encapsulées (apps Teams, Electron). |
 | 2. Il les évalue sur 90+ critères de sécurité (certification ISO, localisation des données, chiffrement, etc.). |
 | 3. Il vous permet de sanctionner (autoriser) ou non-sanctionner (bloquer) chaque application. |
@@ -74,8 +73,7 @@ Dans un environnement hybride, vos collaborateurs utilisent des appareils joints
 
 
 
-| ℹ️  INFO Pour que Cloud Discovery fonctionne en environnement hybride, les appareils doivent être inscrits dans Microsoft Defender for Endpoint (onboardés). Si ce n'est pas encore le cas, la section 1.3.3 explique comment onboarder les appareils. |
-|---|
+> ℹ️  INFO Pour que Cloud Discovery fonctionne en environnement hybride, les appareils doivent être inscrits dans Microsoft Defender for Endpoint (onboardés). Si ce n'est pas encore le cas, la section 1.3.3 explique comment onboarder les appareils.
 
 
 
@@ -140,8 +138,7 @@ Si vos appareils ne sont pas encore onboardés dans Defender for Endpoint, voici
 
 
 
-| Applications IA à risque élevé - Liste de référence |
-|---|
+> Applications IA à risque élevé - Liste de référence
 | Les applications suivantes sont fréquemment détectées et présentent un risque élevé pour les données d'entreprise : |
 | - ChatGPT (OpenAI) - Entraînement possible sur vos données sans opt-out explicite |
 | - Gemini (Google) - Données stockées aux États-Unis |
@@ -168,8 +165,7 @@ La notion de sanction dans MDCA signifie 'application approuvée par l'entrepris
 
 
 
-| ⚠️  ATTENTION Le blocage effectif via 'Non sanctionner' nécessite que l'intégration Defender for Endpoint soit active (section 1.3). Sans cette intégration, le statut 'Non sanctionné' est uniquement informatif il ne bloque pas l'accès. |
-|---|
+> ⚠️  ATTENTION Le blocage effectif via 'Non sanctionner' nécessite que l'intégration Defender for Endpoint soit active (section 1.3). Sans cette intégration, le statut 'Non sanctionné' est uniquement informatif il ne bloque pas l'accès.
 
 
 
@@ -206,8 +202,7 @@ Les politiques MDCA permettent de recevoir des alertes et d'automatiser des acti
 
 ### 1.7.2 Stratégie de surveillance des transferts de données vers des IA
 
-| ⛔  SECTION OPTIONNELLE - Non déployée dans ce guide. À lire avant de configurer quoi que ce soit. La stratégie de session décrite ci-dessous ne fonctionne que si le proxy CAAC (Conditional Access App Control) est déployé, ce que ce guide ne fait pas. Sans ce proxy, elle est silencieusement inactive et ne bloque rien. Elle n'apporte aucune couverture supplémentaire face aux vecteurs Shadow AI réels (le copier-coller, le mobile et les API directes restent hors de sa portée). Si vous suivez ce guide pour la première fois, ne configurez pas cette section : passez directement à la section 1.8.1 (politique BYOD). Le contenu ci-dessous est conservé à titre de référence pour les organisations qui exploitent déjà un proxy CAAC. |
-|---|
+> ⛔  SECTION OPTIONNELLE - Non déployée dans ce guide. À lire avant de configurer quoi que ce soit. La stratégie de session décrite ci-dessous ne fonctionne que si le proxy CAAC (Conditional Access App Control) est déployé, ce que ce guide ne fait pas. Sans ce proxy, elle est silencieusement inactive et ne bloque rien. Elle n'apporte aucune couverture supplémentaire face aux vecteurs Shadow AI réels (le copier-coller, le mobile et les API directes restent hors de sa portée). Si vous suivez ce guide pour la première fois, ne configurez pas cette section : passez directement à la section 1.8.1 (politique BYOD). Le contenu ci-dessous est conservé à titre de référence pour les organisations qui exploitent déjà un proxy CAAC.
 
 
 ⚠️ PRÉREQUIS OBLIGATOIRE - Conditional Access App Control (CAAC)
@@ -245,8 +240,7 @@ Procédure dans Entra ID (https://entra.microsoft.com) → Accès conditionnel �
 
 
 
-| ✅  CONSEIL Conseil pour les débutants : Commencez obligatoirement en mode Rapport uniquement. Attendez au minimum 1 semaine et consultez les Journaux de connexion (Entra ID → Supervision → Journaux de connexion) pour vérifier l’impact avant d’activer. Note 2026 : l’octroi d’application cliente approuvée est mis hors service, ne pas utiliser ce contrôle dans les nouvelles stratégies CA. |
-|---|
+> ✅  CONSEIL Conseil pour les débutants : Commencez obligatoirement en mode Rapport uniquement. Attendez au minimum 1 semaine et consultez les Journaux de connexion (Entra ID → Supervision → Journaux de connexion) pour vérifier l’impact avant d’activer. Note 2026 : l’octroi d’application cliente approuvée est mis hors service, ne pas utiliser ce contrôle dans les nouvelles stratégies CA.
 
 
 

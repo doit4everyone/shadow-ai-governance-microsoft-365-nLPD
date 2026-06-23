@@ -38,8 +38,7 @@ lang: fr
 - Les anomalies comportementales liées à l'IA (ex: un utilisateur qui interroge Copilot sur des milliers de documents en peu de temps).
 
 
-| nLPD SUISSE nLPD Art. 62 - Secret professionnel : DSPM for AI permet de prouver que vous surveillez activement les accès aux données sensibles via les outils IA, ce qui est essentiel pour la conformité nLPD en cas d'audit du PFPDT. |
-|---|
+> nLPD SUISSE nLPD Art. 62 - Secret professionnel : DSPM for AI permet de prouver que vous surveillez activement les accès aux données sensibles via les outils IA, ce qui est essentiel pour la conformité nLPD en cas d'audit du PFPDT.
 
 
 

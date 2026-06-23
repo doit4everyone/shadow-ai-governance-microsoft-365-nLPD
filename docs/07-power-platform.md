@@ -38,8 +38,7 @@ lang: fr
 
 ## 7.2 Inventaire préalable obligatoire
 
-| ⚠️ PRÉREQUIS : Inventaire AVANT la politique DLP La politique DLP Power Platform est active immédiatement et sans mode simulation. Tout flux utilisant un connecteur bloqué cessera de fonctionner dès la création. Effectuez l’inventaire ci-dessous AVANT d’appliquer la politique. |
-|---|
+> ⚠️ PRÉREQUIS : Inventaire AVANT la politique DLP La politique DLP Power Platform est active immédiatement et sans mode simulation. Tout flux utilisant un connecteur bloqué cessera de fonctionner dès la création. Effectuez l’inventaire ci-dessous AVANT d’appliquer la politique.
 
 
 

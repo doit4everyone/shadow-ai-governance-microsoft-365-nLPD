@@ -33,8 +33,7 @@ lang: fr
 ℹ️ Cette partie s’applique à tous les cas (A, B et C). IRM détecte spécifiquement les comportements Shadow AI : téléchargements massifs vers des IA externes, exfiltration de données, rétrograde d’étiquettes pour contourner les DLP.  Insider Risk Management (IRM) est la fonctionnalité Purview qui détecte les comportements internes à risque - y compris les employés qui tentent d'exfiltrer des données via des outils IA non autorisés.
 
 
-| Cas d'usage Shadow AI pour IRM |
-|---|
+> Cas d'usage Shadow AI pour IRM
 | - Employé qui télécharge massivement des fichiers clients avant de les uploader sur une IA externe. |
 | - Employé en préavis de départ qui copie de grandes quantités de données sensibles. |
 | - Employé qui accède régulièrement à des documents Secret en dehors de ses heures habituelles. |
@@ -45,8 +44,7 @@ lang: fr
 
 ## 5.2 Créer la stratégie IRM-Shadow-AI-Navigation
 
-| Accès : Microsoft Purview → Gestion des risques internes |
-|---|
+> Accès : Microsoft Purview → Gestion des risques internes
 | Chemin : Microsoft Purview → Gestion des risques internes → Stratégies → + Créer une stratégie. Le wizard s’ouvre avec 7 sections de navigation (détaillées ci-dessous en 12 étapes numérotées, certaines sections comportant plusieurs pages) dans la barre de gauche : Modèle de stratégie, Nom et description, Utilisateurs et groupes, Contenu à prioriser, Événement déclencheur, Indicateurs, Terminer. |
 
 
@@ -112,8 +110,7 @@ lang: fr
 
 
 
-| nLPD SUISSE Insider Risk Management traite des données comportementales des employés (historique de navigation, accès aux fichiers, activité Copilot). En Suisse, cela constitue un traitement de données personnelles au sens de l’art. 5 nLPD. Obligations préalables : information des employés (art. 19 nLPD) sur la surveillance et ses finalités, et potentiellement consultation des représentants du personnel selon le règlement intérieur. Consultez votre service juridique avant d’activer cette fonctionnalité en production. |
-|---|
+> nLPD SUISSE Insider Risk Management traite des données comportementales des employés (historique de navigation, accès aux fichiers, activité Copilot). En Suisse, cela constitue un traitement de données personnelles au sens de l’art. 5 nLPD. Obligations préalables : information des employés (art. 19 nLPD) sur la surveillance et ses finalités, et potentiellement consultation des représentants du personnel selon le règlement intérieur. Consultez votre service juridique avant d’activer cette fonctionnalité en production.
 
 
 

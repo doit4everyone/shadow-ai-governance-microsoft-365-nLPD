@@ -41,8 +41,7 @@ Avant de déployer la couche MDCA Shadow AI, vous devez déterminer dans quelle 
 ## 2.1 Cas A : Nouveau tenant (Purview non configuré)
 Si Purview n’a jamais été configuré dans votre organisation, commencez impérativement par le guide de référence ci-dessous avant de revenir à ce document.
 
-| 📄  DOCUMENT DE RÉFÉRENCE - Cas A Ce guide couvre la configuration complète depuis un tenant vierge : groupes de sécurité mail-enabled, 7 étiquettes de sensibilité avec chiffrement RMS, SITs personnalisés (AVS, IBAN, données médicales), politiques DLP, auto-labelling, Endpoint DLP, DSPM for AI, Insider Risk Management et gouvernance SharePoint. Téléchargez le guide ici : https://doit4everyone.github.io/microsoft-purview-configuration-2026-nLPD/ Une fois ce guide appliqué intégralement, revenez ici et suivez la section 2.2 (Cas B). |
-|---|
+> 📄  DOCUMENT DE RÉFÉRENCE - Cas A Ce guide couvre la configuration complète depuis un tenant vierge : groupes de sécurité mail-enabled, 7 étiquettes de sensibilité avec chiffrement RMS, SITs personnalisés (AVS, IBAN, données médicales), politiques DLP, auto-labelling, Endpoint DLP, DSPM for AI, Insider Risk Management et gouvernance SharePoint. Téléchargez le guide ici : https://doit4everyone.github.io/microsoft-purview-configuration-2026-nLPD/ Une fois ce guide appliqué intégralement, revenez ici et suivez la section 2.2 (Cas B).
 
 
 
@@ -65,8 +64,7 @@ Vérifiez que les éléments suivants sont en place. Ces prérequis sont nécess
 ## 2.3 Cas C : Tenant existant avec Purview partiellement déployé
 C’est le cas le plus fréquent en PME : Purview a été activé lors de la souscription à Business Premium, mais seule une partie des fonctionnalités a été configurée. Avant de déployer la couche Shadow AI, vous devez faire un inventaire de l’existant et combler les manques critiques.
 
-| ⚠️  ATTENTION : Ne jamais modifier à l’aveugle Toute modification d’une étiquette existante ou d’une politique DLP active impacte immédiatement tous les utilisateurs et tous les fichiers déjà étiquetés. Lisez entièrement cette section avant de toucher quoi que ce soit. Travaillez toujours en mode Simulation pour les nouvelles politiques DLP avant de les activer. |
-|---|
+> ⚠️  ATTENTION : Ne jamais modifier à l’aveugle Toute modification d’une étiquette existante ou d’une politique DLP active impacte immédiatement tous les utilisateurs et tous les fichiers déjà étiquetés. Lisez entièrement cette section avant de toucher quoi que ce soit. Travaillez toujours en mode Simulation pour les nouvelles politiques DLP avant de les activer.
 
 
 

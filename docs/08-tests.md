@@ -59,8 +59,7 @@ lang: fr
 
 
 
-| ⚠️ Mode TestWithNotifyUser, passage en mode Blocage La politique DLP est actuellement en mode « TestWithNotifyUser » : elle détecte et notifie mais ne bloque pas. Pour activer le blocage réel, modifiez la politique dans Purview → Protection des données → Stratégies → DLP - Blocage partage externe données sensibles (nLPD) → Mode : Activer la stratégie DLP. Cette modification doit être précédée d’une communication aux utilisateurs (art. 19 nLPD). |
-|---|
+> ⚠️ Mode TestWithNotifyUser, passage en mode Blocage La politique DLP est actuellement en mode « TestWithNotifyUser » : elle détecte et notifie mais ne bloque pas. Pour activer le blocage réel, modifiez la politique dans Purview → Protection des données → Stratégies → DLP - Blocage partage externe données sensibles (nLPD) → Mode : Activer la stratégie DLP. Cette modification doit être précédée d’une communication aux utilisateurs (art. 19 nLPD).
 
 
 

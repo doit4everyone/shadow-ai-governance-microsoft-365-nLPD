@@ -40,8 +40,8 @@ Avant de commencer, vérifiez que vous disposez bien des licences nécessaires. 
 
 
 
-| ℹ️  INFO Comment vérifier vos licences : Connectez-vous à https://admin.microsoft.com → Facturation → Vos produits. Vous devez voir les deux licences listées ci-dessus avec un statut Actif.<br>Note licences Copilot M365 : DSPM for AI peut surveiller les interactions Copilot M365, mais Microsoft 365 Copilot n’est pas inclus dans Business Premium ni dans Defender and Purview Suite. Il fait l’objet d’une licence distincte : «Microsoft 365 Business Premium and Microsoft 365 Copilot Business». Sans cette licence, DSPM for AI sera actif mais n’aura pas de données d’interaction Copilot M365 à surveiller. |
-|---|
+> ℹ️  INFO Comment vérifier vos licences : Connectez-vous à https://admin.microsoft.com → Facturation → Vos produits. Vous devez voir les deux licences listées ci-dessus avec un statut Actif.
+> Note licences Copilot M365 : DSPM for AI peut surveiller les interactions Copilot M365, mais Microsoft 365 Copilot n’est pas inclus dans Business Premium ni dans Defender and Purview Suite. Il fait l’objet d’une licence distincte : «Microsoft 365 Business Premium and Microsoft 365 Copilot Business». Sans cette licence, DSPM for AI sera actif mais n’aura pas de données d’interaction Copilot M365 à surveiller.
 
 
 
@@ -59,8 +59,7 @@ Vous avez besoin d'un compte avec les droits administrateur. Voici comment attri
 
 
 
-| ⚠️  ATTENTION Bonne pratique : Évitez d'utiliser le compte Administrateur général au quotidien. Créez un compte dédié aux tâches d'administration (ex: admin-securite@votre-domaine.ch) et attribuez-lui uniquement les rôles nécessaires. |
-|---|
+> ⚠️  ATTENTION Bonne pratique : Évitez d'utiliser le compte Administrateur général au quotidien. Créez un compte dédié aux tâches d'administration (ex: admin-securite@votre-domaine.ch) et attribuez-lui uniquement les rôles nécessaires.
 
 
 
@@ -96,8 +95,7 @@ Certaines configurations nécessitent PowerShell. Voici comment l'installer corr
 
 
 
-| ℹ️  INFO Si la commande Install-Module échoue avec une erreur de sécurité, tapez d'abord : Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser Puis relancez l'installation du module. |
-|---|
+> ℹ️  INFO Si la commande Install-Module échoue avec une erreur de sécurité, tapez d'abord : Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser Puis relancez l'installation du module.
 
 
 

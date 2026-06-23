@@ -89,8 +89,7 @@ lang: fr
 
 
 
-| ⚠️ Maintenance et limites Ces indicateurs constituent une liste statique. Elle couvre les fournisseurs IA majeurs connus au moment de la rédaction. Pour les domaines web grand public (chatgpt.com, claude.ai...), MDCA (Partie 1) gère dynamiquement le blocage via son catalogue d'applications cloud, mis à jour en continu par Microsoft (plusieurs milliers d'applications, dont la catégorie IA générative), sans maintenance manuelle requise pour ce vecteur. Pour les nouveaux fournisseurs API, ajoutez leur domaine API dans cet onglet. Pour les nouvelles applications web IA, elles sont généralement ajoutées automatiquement au catalogue MDCA. Prérequis indispensable : les appareils doivent être onboardés dans Microsoft Defender for Endpoint (section 1.3.3). Sans MDE, les indicateurs n’ont aucun effet. |
-|---|
+> ⚠️ Maintenance et limites Ces indicateurs constituent une liste statique. Elle couvre les fournisseurs IA majeurs connus au moment de la rédaction. Pour les domaines web grand public (chatgpt.com, claude.ai...), MDCA (Partie 1) gère dynamiquement le blocage via son catalogue d'applications cloud, mis à jour en continu par Microsoft (plusieurs milliers d'applications, dont la catégorie IA générative), sans maintenance manuelle requise pour ce vecteur. Pour les nouveaux fournisseurs API, ajoutez leur domaine API dans cet onglet. Pour les nouvelles applications web IA, elles sont généralement ajoutées automatiquement au catalogue MDCA. Prérequis indispensable : les appareils doivent être onboardés dans Microsoft Defender for Endpoint (section 1.3.3). Sans MDE, les indicateurs n’ont aucun effet.
 
 
 
