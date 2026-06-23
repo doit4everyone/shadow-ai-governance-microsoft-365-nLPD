@@ -1,0 +1,9 @@
+title: "Gouvernance Shadow AI Microsoft 365 — Guide MDCA + Purview"
+description: "Guide complet de gouvernance du Shadow AI en environnement Microsoft 365 Business Premium pour PME suisses : MDCA, Purview DLP, DSPM for AI, Insider Risk Management, DLP inline Edge for Business. Conformité nLPD."
+url: "https://doit4everyone.github.io"
+baseurl: "/shadow-ai-governance-microsoft-365-nLPD"
+lang: fr
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
