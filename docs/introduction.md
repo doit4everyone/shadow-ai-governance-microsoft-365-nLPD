@@ -43,8 +43,8 @@ Voici des situations réelles que vous pouvez rencontrer dans votre organisation
 - Un médecin dans une clinique utilise un chatbot IA pour reformuler des notes médicales contenant des données de patients.
 
 
-| 🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont transmises à des serveurs situés hors de la Suisse, hors de l'Union Européenne, sans accord de traitement des données, sans chiffrement garanti, et potentiellement utilisées pour réentraîner les modèles d'IA. |
-|---|
+🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont transmises à des serveurs situés hors de la Suisse, hors de l'Union Européenne, sans accord de traitement des données, sans chiffrement garanti, et potentiellement utilisées pour réentraîner les modèles d'IA. |
+
 
 
 
