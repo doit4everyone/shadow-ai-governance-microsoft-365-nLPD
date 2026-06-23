@@ -30,6 +30,7 @@ lang: fr
 
 Avant de déployer la couche MDCA Shadow AI, vous devez déterminer dans quelle situation se trouve votre tenant Purview. Trois cas sont possibles. Lisez le tableau ci-dessous et suivez uniquement la section correspondant à votre situation.
 
+
 | Votre situation | Description | Section à suivre |
 |---|---|---|
 | Cas A - Nouveau tenant | Purview n’a jamais été configuré. Aucune étiquette, aucune politique DLP, aucun audit. | Section 2.1 |
@@ -37,17 +38,18 @@ Avant de déployer la couche MDCA Shadow AI, vous devez déterminer dans quelle 
 | Cas C - Purview partiellement déployé | Votre tenant est une PME existante avec Purview en place, mais configuré de façon partielle ou différente du guide de référence. | Section 2.3 |
 
 
-
 ## 2.1 Cas A : Nouveau tenant (Purview non configuré)
 Si Purview n’a jamais été configuré dans votre organisation, commencez impérativement par le guide de référence ci-dessous avant de revenir à ce document.
 
-> 📄  DOCUMENT DE RÉFÉRENCE - Cas A Ce guide couvre la configuration complète depuis un tenant vierge : groupes de sécurité mail-enabled, 7 étiquettes de sensibilité avec chiffrement RMS, SITs personnalisés (AVS, IBAN, données médicales), politiques DLP, auto-labelling, Endpoint DLP, DSPM for AI, Insider Risk Management et gouvernance SharePoint. Téléchargez le guide ici : https://doit4everyone.github.io/microsoft-purview-configuration-2026-nLPD/ Une fois ce guide appliqué intégralement, revenez ici et suivez la section 2.2 (Cas B).
+> **📄  DOCUMENT DE RÉFÉRENCE - Cas A Ce guide couvre la configuration complète depuis un tenant vierge : groupes de sécurité mail-enabled, 7 étiquettes de sensibilité avec chiffrement RMS, SITs personnalisés (AVS, IBAN, données médicales), politiques DLP, auto-labelling, Endpoint DLP, DSPM for AI, Insider Risk Management et gouvernance SharePoint. Téléchargez le guide ici : https://doit4everyone.github.io/microsoft-purview-configuration-2026-nLPD/ Une fois ce guide appliqué intégralement, revenez ici et suivez la section 2.2 (Cas B).**
 
 
 
 
 ## 2.2 Cas B : Guide Purview de référence déjà appliqué
 Vérifiez que les éléments suivants sont en place. Ces prérequis sont nécessaires pour que les règles DLP Shadow AI (Partie 3) et les politiques DSPM for AI (Partie 4) fonctionnent correctement.
+
+
 
 | ✔ | Prérequis | Réf. guide Purview |
 |---|---|---|
@@ -59,12 +61,10 @@ Vérifiez que les éléments suivants sont en place. Ces prérequis sont nécess
 | ☐ | Appareils onboardés dans Microsoft Defender for Endpoint | Section 1.3 de ce guide. Vérification : security.microsoft.com → Ressources → Inventaire des appareils — métrique clé : «Non intégré = 0». |
 
 
-
-
 ## 2.3 Cas C : Tenant existant avec Purview partiellement déployé
 C’est le cas le plus fréquent en PME : Purview a été activé lors de la souscription à Business Premium, mais seule une partie des fonctionnalités a été configurée. Avant de déployer la couche Shadow AI, vous devez faire un inventaire de l’existant et combler les manques critiques.
 
-> ⚠️  ATTENTION : Ne jamais modifier à l’aveugle Toute modification d’une étiquette existante ou d’une politique DLP active impacte immédiatement tous les utilisateurs et tous les fichiers déjà étiquetés. Lisez entièrement cette section avant de toucher quoi que ce soit. Travaillez toujours en mode Simulation pour les nouvelles politiques DLP avant de les activer.
+> **⚠️  ATTENTION : Ne jamais modifier à l’aveugle Toute modification d’une étiquette existante ou d’une politique DLP active impacte immédiatement tous les utilisateurs et tous les fichiers déjà étiquetés. Lisez entièrement cette section avant de toucher quoi que ce soit. Travaillez toujours en mode Simulation pour les nouvelles politiques DLP avant de les activer.**
 
 
 
@@ -72,8 +72,11 @@ C’est le cas le plus fréquent en PME : Purview a été activé lors de la so
 Étape préalable obligatoire avant toute configuration. Notez les résultats dans un tableau ou un document texte, vous en aurez besoin pour la suite.
 
 
-| Ce qu’il faut vérifier | Où et comment |
+
+
+| Étape | Description |
 |---|---|
+| Ce qu’il faut vérifier | Où et comment |
 | Étiquettes de sensibilité existantes | Purview → Protection des informations → Étiquettes. Notez : noms, niveaux, chiffrement activé ou non, groupes assignés. |
 | Politiques DLP actives | Purview → Protection contre la perte de données → Politiques. Notez : emplacements couverts, actions (bloquer / avertir / auditer), mode (Test ou Actif). |
 | Politiques d’auto-labelling | Purview → Protection des informations → Politiques d’étiquetage automatique. Notez : SITs détectés, étiquettes appliquées, emplacements. |
@@ -82,10 +85,9 @@ C’est le cas le plus fréquent en PME : Purview a été activé lors de la so
 | Appareils onboardés MDE | Portail Defender → Ressources → Inventaire des appareils. Vérifiez que vos postes Windows apparaissent dans la liste. Métrique clé : «Non intégré = 0» indique que tous les appareils sont onboardés. |
 
 
-
-
 ### 2.3.2 Prérequis obligatoires Purview partiel
 Après l’inventaire, vérifiez que chaque élément ci-dessous est présent. Pour chaque prérequis manquant, la colonne «Action» indique exactement ce que vous devez faire avant de continuer.
+
 
 
 | Prérequis | Situation acceptable | Action si manquant |
@@ -98,13 +100,15 @@ Après l’inventaire, vérifiez que chaque élément ci-dessous est présent. P
 | Appareils onboardés dans MDE | Les postes Windows apparaissent dans Defender → Appareils avec statut Actif. C’est nécessaire pour Cloud Discovery MDCA et Endpoint DLP. | Suivre la section 1.3.3 de ce guide pour l’onboarding via Intune. |
 
 
-
 ### 2.3.3 Points de vigilance spécifiques aux tenants existants
 Même avec les prérequis en place, plusieurs situations fréquentes en PME peuvent bloquer le déploiement Shadow AI ou créer des conflits silencieux.
 
 
-| Situation fréquente | Ce qu’il faut faire |
+
+
+| Étape | Description |
 |---|---|
+| Situation fréquente | Ce qu’il faut faire |
 | Étiquettes avec des noms différents du guide Configuration_Microsoft_Purview_2026.docx (ex : Privé, Restreint, Très secret) | Ne pas renommer les étiquettes existantes, cela réinitialise la protection sur tous les fichiers déjà étiquetés. Mapper les noms existants aux niveaux du guide et documenter la correspondance. Utiliser ces noms dans les règles DLP Shadow AI de la Partie 3. |
 | Politiques DLP déjà actives en mode Blocage | Ajouter les nouvelles règles Shadow AI à une politique existante plutôt que d’en créer une nouvelle. Passer la règle en mode Test uniquement, pas la politique entière. Vérifier que la nouvelle règle ne crée pas de doublon de blocage sur les mêmes conditions. |
 | MDCA déjà configuré avec des politiques de découverte existantes | Faire l’inventaire des politiques MDCA avant d’en créer de nouvelles (section 1.7). Vérifier si des applications IA sont déjà marquées Sanctionnées. Ne pas modifier ces statuts sans validation métier. |
@@ -112,14 +116,14 @@ Même avec les prérequis en place, plusieurs situations fréquentes en PME peuv
 | Purview Suite absente, uniquement Business Premium | DSPM for AI, Insider Risk Management et Endpoint DLP avancé ne sont pas disponibles sans l’add-on Purview Suite. Cet add-on est un prérequis obligatoire de ce guide (voir section 0.1). Si votre organisation ne l’a pas encore acquis, la couche MDCA (Partie 1) reste fonctionnelle, mais les Parties 3 à 5 ne pourront pas être déployées. |
 
 
-
-
 ### 2.3.4 Ordre de déploiement recommandé pour un tenant existant
 
 Sur un tenant existant, déployez les éléments dans cet ordre strict pour éviter les effets de bord.
 
-| Ordre | Action |
+
+| Étape | Description |
 |---|---|
+| Ordre | Action |
 | 1 | Faire l’inventaire complet (section 2.3.1). Ne rien modifier avant. |
 | 2 | Activer l’audit si pas encore fait. Attendre 48-72h. |
 | 3 | Vérifier ou compléter les étiquettes et groupes mail-enabled (prérequis RMS). |
@@ -127,7 +131,6 @@ Sur un tenant existant, déployez les éléments dans cet ordre strict pour évi
 | 5 | Ajouter les règles DLP Shadow AI en mode Test (Partie 3). Attendre 48h et valider avant d’activer. |
 | 6 | Configurer DSPM for AI et Insider Risk Management si Purview Suite est disponible (Parties 4 et 5). |
 | 7 | Activer le blocage MDCA (Non-sanction + Defender for Endpoint). C’est l’étape la plus visible pour les utilisateurs, prévenir en amont. |
-
 
 
 ---
