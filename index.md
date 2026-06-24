@@ -89,6 +89,8 @@ Cette solution est une architecture de contrôle centrée sur le réseau et la d
 
 ⚠️ Déployée sur des fondations fragiles (permissions SharePoint incohérentes, appareils non onboardés, Network Protection désactivé), cette solution donnera une fausse impression de sécurité. Déployée correctement, elle constitue une défense en profondeur efficace et démontrable face au PFPDT — dans un périmètre réaliste de 70 à 85 % de couverture sur un environnement Windows géré (voir matrice de couverture, section 9.7). Ce n’est pas une défense complète : mobile, SaaS IA native et LLM locaux restent hors périmètre.
 
+> Cette architecture reflète un niveau de contrôle réaliste basé sur les capacités actuelles de Microsoft 365, et non une couverture exhaustive du Shadow AI.
+
 
 ---
 
