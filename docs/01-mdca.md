@@ -168,7 +168,7 @@ La notion de sanction dans MDCA signifie 'application approuvée par l'entrepris
 | 2 | Marquer les outils IA non approuvés comme Non sanctionnés Pour chaque application IA non autorisée (ChatGPT grand public, Gemini, etc.) : Cliquez sur Annulation de l’approbation dans la fiche de l’application. Confirmez en cliquant Enregistrer dans le dialogue Marquer comme non approuvé ?. Le statut passe à Application non sanctionnée (icône rouge ⦸). MDCA envoie automatiquement la règle de blocage à Defender for Endpoint si l’intégration est active (section 1.3.1). |
 
 
-> **⚠️  ATTENTION Le blocage effectif via 'Non sanctionner' nécessite que l'intégration Defender for Endpoint soit active (section 1.3). Sans cette intégration, le statut 'Non sanctionné' est uniquement informatif il ne bloque pas l'accès.**
+> **⚠️  ATTENTION Le blocage effectif via 'Non sanctionner' nécessite que l'intégration Defender for Endpoint soit active (section 1.3). Sans cette intégration, le statut 'Non sanctionné' est uniquement informatif — il ne bloque pas l'accès.**
 
 
 
@@ -205,7 +205,7 @@ Les politiques MDCA permettent de recevoir des alertes et d'automatiser des acti
 
 
 ⚠️ PRÉREQUIS OBLIGATOIRE - Conditional Access App Control (CAAC)
-Une politique de session MDCA n’intercepte le trafic QUE si l’application est préalablement routée à travers le proxy MDCA. Cela exige une politique d’Accès Conditionnel Entra ID avec le contrôle de session « Utiliser le contrôle d’application par accès conditionnel». Sans cette configuration, la session policy n’a aucun effet elle ne voit aucun trafic.
+Une politique de session MDCA n’intercepte le trafic QUE si l’application est préalablement routée à travers le proxy MDCA. Cela exige une politique d’Accès Conditionnel Entra ID avec le contrôle de session « Utiliser le contrôle d’application par accès conditionnel». Sans cette configuration, la session policy n’a aucun effet — elle ne voit aucun trafic.
 Procédure dans Entra ID (https://entra.microsoft.com) → Accès conditionnel → Stratégies → + Nouvelle stratégie : (1) Nom : CAAC-Shadow-AI-Session-Control. (2) Utilisateurs ou assistants → Tous les utilisateurs. (3) Ressources cibles → Toutes les ressources (anciennement « Toutes les applications cloud »). (4) Contrôles d’accès → Session → cochez Utiliser le contrôle d’application par accès conditionnel → sélectionnez Utiliser une stratégie personnalisée... (5) Activer une stratégie → Rapport uniquement. (6) Cliquez Créer.
 
 

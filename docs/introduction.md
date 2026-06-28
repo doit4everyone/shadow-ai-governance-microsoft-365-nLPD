@@ -51,7 +51,7 @@ Voici des situations réelles que vous pouvez rencontrer dans votre organisation
 ## Les risques liés au Shadow AI
 
 ### Risque de fuite de données (Data Exfiltration)
-Lorsqu'un collaborateur colle des données dans une IA externe ces données sont envoyées vers les serveurs du fournisseur de l'IA, généralement aux États-Unis ou dans d'autres pays hors Suisse. Le fournisseur peut :
+Lorsqu'un collaborateur colle des données dans une IA externe, ces données sont envoyées vers les serveurs du fournisseur de l'IA, généralement aux États-Unis ou dans d'autres pays hors Suisse. Le fournisseur peut :
 - Stocker ces données de manière permanente.
 - Les utiliser pour améliorer ses modèles (selon ses conditions d'utilisation).
 - Les exposer en cas de violation de sécurité (data breach).

@@ -30,7 +30,7 @@ lang: fr
 
 
 ## 5.1 Comprendre Insider Risk Management
-ℹ️ Cette partie s’applique à tous les cas (A, B et C). IRM détecte spécifiquement les comportements Shadow AI : téléchargements massifs vers des IA externes, exfiltration de données, rétrograde d’étiquettes pour contourner les DLP.  Insider Risk Management (IRM) est la fonctionnalité Purview qui détecte les comportements internes à risque - y compris les employés qui tentent d'exfiltrer des données via des outils IA non autorisés.
+ℹ️ Cette partie s’applique à tous les cas (A, B et C). IRM détecte spécifiquement les comportements Shadow AI : téléchargements massifs vers des IA externes, exfiltration de données, rétrogradation d’étiquettes pour contourner les DLP.  Insider Risk Management (IRM) est la fonctionnalité Purview qui détecte les comportements internes à risque - y compris les employés qui tentent d'exfiltrer des données via des outils IA non autorisés.
 
 
 > **Cas d'usage Shadow AI pour IRM**
