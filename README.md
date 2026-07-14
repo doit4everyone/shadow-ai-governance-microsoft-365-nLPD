@@ -1,6 +1,6 @@
 # Gouvernance Shadow AI — Microsoft 365 (nLPD)
 
-Guide complet de gouvernance du **Shadow AI** en environnement **Microsoft 365 Business Premium**, destiné aux PME suisses. Couvre MDCA, Purview DLP (y compris la DLP inline Edge for Business), DSPM for AI, Insider Risk Management et la gouvernance Power Platform, avec une cartographie complète des obligations **nLPD** (art. 5, 6, 8, 9, 16, 19, 24, 62, 64).
+Guide complet de gouvernance du **Shadow AI** en environnement **Microsoft 365 Business Premium**, destiné aux PME suisses. Couvre MDCA, Purview DLP (y compris la DLP inline Edge for Business), DSPM for AI, Insider Risk Management et la gouvernance Power Platform, avec une cartographie complète des obligations **nLPD** (art. 5, 6, 7, 8, 9, 16, 19, 22, 24, 32, 61, 62, 64).
 
 📖 **Site complet :** https://doit4everyone.github.io/shadow-ai-governance-microsoft-365-nLPD/
 
