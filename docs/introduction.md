@@ -1,6 +1,6 @@
 ---
 title: "Introduction — Le Shadow AI et les risques pour l’entreprise | Gouvernance Shadow AI Microsoft 365"
-description: "Qu'est-ce que le Shadow AI, exemples concrets en entreprise, risques de fuite de données, vecteur API non contrôlé, risques réglementaires nLPD (art. 5, 6, 8, 9, 16, 24, 62), architecture de la solution MDCA + Purview, modèle de menace pour PME suisse."
+description: "Qu'est-ce que le Shadow AI, exemples concrets en entreprise, risques de fuite de données, vecteur API non contrôlé, risques réglementaires nLPD (art. 5, 6, 7, 8, 9, 16, 19, 22, 24, 32, 61, 62, 64), architecture de la solution MDCA + Purview, modèle de menace pour PME suisse."
 lang: fr
 ---
 <style>
@@ -43,7 +43,7 @@ Voici des situations réelles que vous pouvez rencontrer dans votre organisation
 - Un médecin dans une clinique utilise un chatbot IA pour reformuler des notes médicales contenant des données de patients.
 
 
-> **🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont transmises à des serveurs situés hors de la Suisse, hors de l'Union Européenne, sans accord de traitement des données, sans chiffrement garanti, et potentiellement utilisées pour réentraîner les modèles d'IA.**
+> **🚫  IMPORTANT Dans tous ces cas, les données quittent le périmètre de sécurité de l'entreprise et sont traitées par un tiers sans aucun contrat de sous-traitance (art. 9 nLPD), potentiellement utilisées pour réentraîner les modèles d'IA (ce qui rend l'effacement inexécutable), sans information des personnes concernées et sans chiffrement garanti. Ces données sont en outre fréquemment transmises à des serveurs hors de Suisse. L'ordre importe : c'est l'absence de contrat et l'entraînement sur les données qui fondent l'illicéité, pas la seule localisation des serveurs.**
 
 
 
@@ -51,7 +51,7 @@ Voici des situations réelles que vous pouvez rencontrer dans votre organisation
 ## Les risques liés au Shadow AI
 
 ### Risque de fuite de données (Data Exfiltration)
-Lorsqu'un collaborateur colle des données dans une IA externe, ces données sont envoyées vers les serveurs du fournisseur de l'IA, généralement aux États-Unis ou dans d'autres pays hors Suisse. Le fournisseur peut :
+Lorsqu'un collaborateur colle des données dans une IA externe ces données sont envoyées vers les serveurs du fournisseur de l'IA, généralement aux États-Unis ou dans d'autres pays hors Suisse. Le fournisseur peut :
 - Stocker ces données de manière permanente.
 - Les utiliser pour améliorer ses modèles (selon ses conditions d'utilisation).
 - Les exposer en cas de violation de sécurité (data breach).
@@ -85,7 +85,11 @@ Les vecteurs d'exfiltration via API incluent :
 
 
 ### Risques réglementaires spécifiques à la Suisse, nLPD
-La Suisse dispose depuis le 1er septembre 2023 de la nouvelle Loi fédérale sur la Protection des Données (nLPD), révisée pour s'aligner en grande partie sur le RGPD européen. Le Shadow AI crée des violations directes de plusieurs articles :
+La Suisse dispose depuis le 1er septembre 2023 de la nouvelle Loi fédérale sur la Protection des Données (nLPD), révisée pour s'aligner en grande partie sur le RGPD européen.
+
+Une précision de cadrage, essentielle pour ne pas se tromper de combat : **la violation ne réside pas d'abord dans la géographie des serveurs.** Elle réside dans l'absence de contrat de sous-traitance, dans l'entraînement du modèle sur les données transmises, dans l'absence d'information des personnes concernées et dans la disproportion du traitement. Un serveur situé à Zurich, exploité sans contrat de sous-traitance, est tout aussi illicite qu'un serveur au Texas. Le transfert international (art. 16) est un problème réel, mais ce n'est ni le premier ni le plus grave.
+
+Les articles concernés :
 
 
 
@@ -94,11 +98,15 @@ La Suisse dispose depuis le 1er septembre 2023 de la nouvelle Loi fédérale sur
 |---|---|
 | Art. 5 let. c - Données sensibles | Les données de santé, biométriques, d'appartenance syndicale, religieuse ou politique envoyées à une IA externe constituent une violation grave. |
 | Art. 6 - Finalité & Proportionnalité | Les données collectées pour un usage précis ne peuvent pas être réutilisées pour entraîner un modèle IA externe. |
+| Art. 7 - Protection des données dès la conception et par défaut | La protection doit être intégrée dès la conception du traitement (by design) ET les préréglages doivent limiter le traitement au minimum requis par la finalité (by default). Un collaborateur utilisant une IA non validée contourne ces deux principes. |
 | Art. 8 - Sécurité des données | L'obligation de mesures techniques et organisationnelles (MTO) est violée si des données peuvent librement quitter le périmètre sécurisé. |
-| Art. 9 - Privacy by Design & by Default | La protection doit être intégrée dès la conception (by design) ET les paramètres les plus protecteurs s’appliquent par défaut (by default). Un collaborateur utilisant une IA non validée contourne ces deux principes. |
-| Art. 16 - Transfert à l'étranger | Transférer des données personnelles vers un fournisseur IA aux USA exige un mécanisme de transfert valable : soit le fournisseur est certifié au titre du Swiss-U.S. Data Privacy Framework reconnu par la Suisse, soit des clauses contractuelles types (SCC) sont en place. À défaut, le transfert est illicite. La certification DPF doit être vérifiée fournisseur par fournisseur ; ce point doit être validé avec votre conseil juridique. En pratique, la quasi-totalité des fournisseurs d’IA générative grand public (OpenAI, Anthropic, Google DeepMind, Mistral, Meta) ne sont pas certifiés au volet suisse du DPF — ce qui rend le transfert illicite par défaut et justifie précisément les mesures de blocage de ce guide. |
+| Art. 9 - Sous-traitance | **L'article le plus directement violé par le Shadow AI.** Confier un traitement à un sous-traitant suppose que la loi ou un contrat le prévoie. Un collaborateur qui colle un dossier RH dans une IA grand public crée un rapport de sous-traitance de fait, sans aucun contrat. Le traitement est illicite indépendamment de la localisation des serveurs. ⚠️ L'absence de contrat de sous-traitance est **pénalement sanctionnée** (art. 61 let. b nLPD, amende jusqu'à CHF 250'000.-). |
+| Art. 16 - Communication de données personnelles à l'étranger | La licéité du transfert dépend de **l'entité juridique destinataire**, pas de la notoriété du fournisseur. → **Fournisseurs établis dans l'UE/EEE ou au Royaume-Uni** (ex. Mistral AI, société française) : ces pays figurent à l'annexe 1 OPDo (États à protection adéquate). Le Data Privacy Framework, cadre exclusivement américain, ne leur est pas applicable et l'art. 16 ne constitue pas ici l'obstacle. → **Fournisseurs américains** : le transfert requiert soit une certification active au titre du **Swiss-U.S.** Data Privacy Framework (reconnu par le Conseil fédéral le 14 août 2024, effet au 15 septembre 2024), soit des clauses contractuelles types (CCT). ⚠️ Trois pièges de vérification : (1) une certification **EU-U.S. DPF ne s'étend pas automatiquement** aux données suisses — l'entité doit avoir souscrit séparément à l'extension suisse ; (2) la certification s'apprécie **entité par entité** et par type de données (HR / Non-HR) ; (3) l'entité contractante pour les utilisateurs suisses n'est pas toujours l'entité américaine (ex. OpenAI Ireland Ltd). Vérification obligatoire sur dataprivacyframework.gov/list avant toute conclusion. |
+| Art. 19 - Devoir d'informer | Les personnes concernées doivent être informées de la collecte et de ses finalités. Un collaborateur qui transmet des données clients à une IA externe rend cette information impossible : ni le client, ni l'employeur ne maîtrisent le traitement réel. Ce même article conditionne l'activation de la surveillance comportementale (IRM, Partie 5). |
+| Art. 22 - Analyse d'impact (AIPD) | Un traitement susceptible d'engendrer un **risque élevé** impose une AIPD préalable. La loi vise notamment le traitement de données sensibles à grande échelle et le recours à de nouvelles technologies. Un usage IA non gouverné portant sur des données RH, médicales ou financières entre dans ce périmètre — et aucune AIPD n'a évidemment été conduite. |
 | Art. 24 - Notification PFPDT | En cas de violation entraînant un risque élevé pour les personnes concernées, vous devez notifier le Préposé Fédéral dès que possible (art. 24 nLPD). Note : seules les violations à risque élevé nécessitent une notification PFPDT ; les violations de faible risque font l’objet d’une documentation interne uniquement. Sans journaux d’audit, vous ne pouvez pas reconstituer l’incident ni respecter cette obligation. |
-| Art. 62 - Secret professionnel | Les professions soumises au secret (médecins, avocats, banquiers) risquent des sanctions pénales en cas de transmission de données clients à une IA externe. |
+| Art. 32 al. 2 - Effacement des données | La personne concernée peut exiger l'effacement ou la destruction de ses données. **Cette obligation devient inexécutable** dès lors que le fournisseur d'IA entraîne son modèle sur les données transmises : les poids du modèle ne sont pas effaçables sur demande. C'est l'argument le plus difficile à contrer contre l'usage des IA grand public en contexte professionnel. |
+| Art. 62 nLPD + art. 321 CP + art. 47 LB - Secret professionnel | L'art. 62 nLPD (violation du devoir de discrétion, dit « petit secret professionnel ») prévoit une amende jusqu'à CHF 250'000.- ; c'est un délit poursuivi **sur plainte**. ⚠️ Mais pour les professions protégées (médecins, avocats, ecclésiastiques), le véritable couperet est l'**art. 321 CP** : peine privative de liberté jusqu'à 3 ans ou peine pécuniaire. Le secret bancaire relève quant à lui de l'art. 47 LB. Aucune décision d'adéquation ni certification DPF ne lève cette contrainte : le secret professionnel est une obligation distincte de la protection des données. |
 
 
 > **nLPD SUISSE La violation de la nLPD peut entraîner des sanctions pénales allant jusqu'à CHF 250'000.- pour les personnes physiques responsables (art. 60-63 nLPD). L'amende s'applique à la personne physique (le responsable), Exception : l'art. 64 nLPD prévoit que l'entreprise peut être condamnée à payer une amende jusqu'à CHF 50'000.- si l'identification de la personne physique responsable exigerait des efforts disproportionnés. Le Préposé Fédéral à la Protection des Données et à la Transparence (PFPDT) dispose de pouvoirs d'enquête et de sanction renforcés depuis la révision de la loi.**
