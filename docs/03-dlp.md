@@ -141,7 +141,7 @@ La DLP inline Edge for Business est une fonctionnalité à paiement à l’utili
 
 | Étape | Description |
 |---|---|
-| 1 | Lier l’abonnement Azure Purview → Protection contre la perte de données → Stratégies. Cliquez sur le bandeau orange « Configurez la facturation avec paiement à l’utilisation » → Prise en main. Sélectionnez votre Souscription Azure et un Groupe de ressources existant (ou créez-en un, ex. : SHADOWS-IA). Cochez « Je confirme avoir lu et accepté les Conditions générales » → Activer. Purview crée automatiquement une ressource Azure (ex. : BSCULIER-AZURE-SERVICES dans le groupe de ressources). La propagation peut prendre quelques minutes. |
+| 1 | Lier l’abonnement Azure Purview → Protection contre la perte de données → Stratégies. Cliquez sur le bandeau orange « Configurez la facturation avec paiement à l’utilisation » → Prise en main. Sélectionnez votre Souscription Azure et un Groupe de ressources existant (ou créez-en un, ex. : SHADOWS-IA). Cochez « Je confirme avoir lu et accepté les Conditions générales » → Activer. Purview crée automatiquement une ressource Azure (ex. : <TENANT>-AZURE-SERVICES dans le groupe de ressources). La propagation peut prendre quelques minutes. |
 | ⚠️ | Coût et facturation Le coût est à l’utilisation uniquement — pas de frais fixes, pas d’engagement. En PME (<50 utilisateurs), le coût est négligeable. Consultez la facturation dans le portail Azure → votre groupe de ressources. |
 
 
