@@ -76,7 +76,7 @@ Cette solution est une architecture de contrôle centrée sur le réseau et la d
 - Gouvernance des connecteurs Power Platform et Copilot Studio (17 connecteurs bloqués)
 - Surveillance des interactions Copilot M365 via DSPM for AI
 - Blocage des prompts contenant des données sensibles (AVS, IBAN) dans les apps IA (ChatGPT, Gemini, DeepSeek) via DLP inline Edge for Business — avec notification Microsoft Purview et traçabilité complète (section 3.4, v1.1). Nécessite un abonnement Azure PAYG
-- Traçabilité audit nLPD (art. 8, 9, 19, 24) sur les vecteurs couverts — rétention des journaux : 1 an avec Microsoft Defender and Purview Suites (90 jours par défaut sans l’add-on)
+- Traçabilité audit nLPD (art. 8, 19, 24) sur les vecteurs couverts — rétention des journaux : 1 an avec Microsoft Defender and Purview Suites (90 jours par défaut sans l’add-on)
 
 ❌ Ce qu’elle ne remplace pas
 - Antivirus / EDR : cette solution ne détecte pas les malwares ni les menaces sur les postes. Microsoft Defender (ou équivalent) reste un prérequis indépendant.
@@ -84,7 +84,7 @@ Cette solution est une architecture de contrôle centrée sur le réseau et la d
 - Structure de permissions : si un collaborateur a accès à un fichier qu’il ne devrait pas voir, cette solution ne corrige pas cette erreur de gouvernance. Une structure de droits cohérente est un préalable indispensable.
 - Mobile iOS/Android : l’app Microsoft Defender existe sur iOS/Android et remonte des données Cloud Discovery, mais les indicateurs URL personnalisés et le blocage réseau ne sont pas supportés sur ces plateformes. Les smartphones personnels hors Intune ne sont pas couverts. La protection mobile (Intune App Protection Policy / MAM) est hors périmètre de ce guide.
 - LLM locaux : Ollama, GPT4All et équivalents tournent sans trafic réseau externe. MDCA, les indicateurs MDE et l’URLBlocklist sont aveugles à ce vecteur. ⚠️ Nuance juridique : l’absence d’exfiltration réseau ne signifie pas absence de risque nLPD — le traitement local de données sensibles (ex. : alimenter un LLM local avec des dossiers RH ou médicaux) peut violer les principes de finalité et de minimisation (art. 6 nLPD) si ce traitement n’a pas été déclaré ou autorisé. Contrôle possible : AppLocker/WDAC via Intune, hors périmètre de ce guide.
-- SaaS tiers à IA native : Notion AI, Salesforce Einstein, HubSpot AI utilisent les sous-domaines des apps SaaS autorisées — trafic invisible, transfert non maîtrisé au sens nLPD art. 8.
+- SaaS tiers à IA native : Notion AI, Salesforce Einstein, HubSpot AI utilisent les sous-domaines des apps SaaS autorisées — trafic invisible. La couche IA de ces services constitue une sous-traitance non contractualisée (art. 9 nLPD) et, si le sous-traitant est hors annexe 1 OPDo, un transfert non couvert (art. 16 nLPD).
 - Copier-coller de texte brut sans donnée sensible détectable : si le texte collé ne contient pas de SIT reconnu (AVS, IBAN), aucun contrôle ne le détecte. C’est le vecteur le plus fréquent et le moins contrôlable techniquement.
 
 ⚠️ Déployée sur des fondations fragiles (permissions SharePoint incohérentes, appareils non onboardés, Network Protection désactivé), cette solution donnera une fausse impression de sécurité. Déployée correctement, elle constitue une défense en profondeur efficace et démontrable face au PFPDT — dans un périmètre réaliste de 70 à 85 % de couverture sur un environnement Windows géré (voir matrice de couverture, section 9.7). Ce n’est pas une défense complète : mobile, SaaS IA native et LLM locaux restent hors périmètre.
@@ -96,7 +96,7 @@ Cette solution est une architecture de contrôle centrée sur le réseau et la d
 
 | Chapitre | Description |
 |---|---|
-| [Introduction — Le Shadow AI et les risques](docs/introduction.md) | Qu’est-ce que le Shadow AI, exemples concrets, risques de fuite de données, vecteur API, risques nLPD (art. 5, 6, 8, 9, 16, 24, 62), architecture de la solution, modèle de menace |
+| [Introduction — Le Shadow AI et les risques](docs/introduction.md) | Qu’est-ce que le Shadow AI, exemples concrets, risques de fuite de données, vecteur API, risques nLPD (art. 5, 6, 7, 8, 9, 16, 19, 22, 24, 32, 61, 62, 64), architecture de la solution, modèle de menace |
 | [Partie 0 — Avant de commencer](docs/00-prerequis.md) | Licences requises, comptes et rôles, portails utilisés, installation PowerShell, checklist de départ |
 | [Partie 1 — Microsoft Defender for Cloud Apps (MDCA)](docs/01-mdca.md) | Cloud Discovery, onboarding Defender for Endpoint, sanction des apps IA, AutoBlock, Conditional Access BYOD |
 | [Partie 2 — Prérequis Microsoft Purview](docs/02-purview-prerequis.md) | Cas A (nouveau tenant), Cas B (guide suivi), Cas C (tenant existant) |
